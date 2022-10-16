@@ -1,10 +1,10 @@
 const express = require('express');
-
 const routes = express.Router();
-const knex = require('./database')
 
-routes.get('/users', (req, res) =>
-    knex('users').then((results) => res.json(results))
-)
+
+const UserController = require('./controllers/UserController')
+
+routes.get('/users', UserController.index)
+
 
 module.exports = routes;
