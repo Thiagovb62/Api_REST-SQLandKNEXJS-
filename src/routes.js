@@ -1,9 +1,10 @@
 const express = require('express');
 
 const routes = express.Router();
+const knex = require('./database')
 
-routes.get('/', (req, res) => {
-    res.json("fucionando")
-})
+routes.get('/users', (req, res) =>
+    knex('users').then((results) => res.json(results))
+)
 
 module.exports = routes;
