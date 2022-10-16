@@ -5,8 +5,8 @@
     "repository": "https://github.com/Thiagovb62/Api_REST-SQLandKNEXJS-.git",
     "author": "Thiago Viana Bezerra <Thiagovb62@gmail.com>",
     "license": "MIT",
-    "script": {
-        "dev ": "nodemon src/server.js"
+    "scripts": {
+        "dev": "nodemon src/server.js"
     },
     "dependencies": {
         "express": "^4.18.2",
