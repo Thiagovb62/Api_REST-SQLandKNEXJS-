@@ -46,5 +46,30 @@ module.exports = {
         } catch (err) {
             next(err);
         }
+    },
+    async update(req, res, next) {
+        try {
+            const { user_id } = req.params
+            const { title } = req.body
+
+            await knex('projects').update({
+                title: title
+            }).where({ user_id: user_id })
+
+            return res.status(200).json({ sucess: "atualizado com sucesso" })
+        } catch (err) {
+            next(err);
+        }
+    },
+    async delete(req, res, next) {
+        try {
+            const { user_id } = req.params
+
+            await knex('projects').where({ user_id }).del()
+
+            return res.status(200).json({ sucess: "deletado com sucesso" })
+        } catch (err) {
+            next(err);
+        }
     }
 }
