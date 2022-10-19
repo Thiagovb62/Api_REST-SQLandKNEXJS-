@@ -4,6 +4,7 @@ module.exports = {
 
     async index(req, res) {
         const results = await knex('users')
+            .where('deleted_at', null)
 
         return res.status(200).json(results)
     },
@@ -40,11 +41,10 @@ module.exports = {
     },
     async delete(req, res, next) {
         try {
-            const { username } = req.body
             const { id } = req.params
 
 
-            await knex('users').where({ id }).del()
+            await knex('users').where({ id }).update('deleted_at', new Date());
 
             return res.status(200).json({ sucess: "deletado com sucesso" })
 
